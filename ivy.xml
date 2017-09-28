@@ -6,6 +6,7 @@
     <conf name="build" extends="default" visibility="private"/>
     <conf name="test" extends="build" visibility="private"/>
   </configurations>
+  
   <dependencies>
     <dependency org="org.lwjgl.lwjgl" name="lwjgl" rev="2.8.2"
                 conf="default"/>
