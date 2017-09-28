@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <project name="SampleJavaProject" default="jar"
          xmlns:ivy="antlib:org.apache.ivy.ant">
-
   <!-- Project-specific configuration -->
   <loadproperties srcfile="project.properties"/>
   <property name="main.class" value="${package.main}.${ant.project.name}"/>
