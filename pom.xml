@@ -23,7 +23,7 @@
       <timezone>-5</timezone>
     </developer>
   </developers>
-
+<plugins>
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-compiler-plugin</artifactId>
@@ -40,5 +40,6 @@
       </configuration>
     </execution>
   </executions>
-</plugin>  
+</plugin>
+</plugins>
 </project>
