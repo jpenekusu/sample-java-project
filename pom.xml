@@ -23,4 +23,22 @@
       <timezone>-5</timezone>
     </developer>
   </developers>
+
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-compiler-plugin</artifactId>
+  <executions>
+    <execution>
+      <id>compile mytests</id>
+      <goals>
+        <goal>testCompile</goal>
+      </goals>
+      <phase>pre-integration-test</phase>
+      <configuration>
+        <testSourceDirectory>${basedir}/test/sample/java/project</testSourceDirectory>
+        <testOutputDirectory>${basedir}/target/test/sample-java-project-classes</testOutputDirectory>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>  
 </project>
