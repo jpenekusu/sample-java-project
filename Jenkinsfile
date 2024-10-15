@@ -25,13 +25,7 @@ pipeline {
                 }
             }
         }        
-        stage('Testing ...') {
-            when {
-                // skip this stage unless on Master branch
-                not {
-                    branch "master"
-                }                    
-            }                    
+        stage('Testing ...') {              
             steps {
                 sh "mvn test"
             }
@@ -41,11 +35,7 @@ pipeline {
                 sh "mvn -B -DskipTests clean package"
             }
         }
-        stage('Code coverage') {
-            when {
-                // skip this stage unless on Master branch
-                branch "master"
-            }                    
+        stage('Code coverage') {               
             steps {        
                 withMaven(maven:'M3') {
                     sh "mvn clean cobertura:cobertura install test -Dcobertura.report.format=xml"                    
@@ -53,17 +43,13 @@ pipeline {
             }
             post {        
                 always {
-                    junit '**/test-reports/*.xml'
+                    //junit '**/test-reports/*.xml'
                     step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 2, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false])
 
                 }
             }
         }
-        stage('Building and sending results to Sonar ...') {
-            when {
-                // skip this stage unless on Master branch
-                branch "master"
-            }            
+        stage('Building and sending results to Sonar ...') {  
             steps {
                 withSonarQubeEnv(installationName: 'SonarInstall', credentialsId: 'sonarqube_token') {
                     sh 'mvn -B -DskipTests clean package sonar:sonar'
