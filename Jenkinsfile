@@ -28,7 +28,7 @@ pipeline {
         stage('Testing ...') {
             when {
                 // skip this stage unless on Master branch
-                when not {
+                not {
                     branch "master"
                 }                    
             }                    
